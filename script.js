@@ -1,6 +1,7 @@
 const character = "#";
 const count = 8;
 const rows = [];
+let inverted = false;
 
 function padRow(rowNumber, rowCount) {
   return (
@@ -10,8 +11,16 @@ function padRow(rowNumber, rowCount) {
   );
 }
 
-for (let i = 0; i < count; i = i + 1) {
-  rows.push(padRow(i + 1, count));
+// for (let i = count; i > 0; i = i - 1) {
+// rows.push(padRow(i, count));
+// }
+
+while (rows.length < count) {
+  if (inverted) {
+    rows.unshift(padRow(rows.length + 1, count));
+  } else {
+    rows.push(padRow(rows.length + 1, count));
+  }
 }
 
 let result = "";
